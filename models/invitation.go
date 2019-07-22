@@ -2,6 +2,6 @@ package models
 
 import "time"
 
-type Invitaion struct {
+type Invitation struct {
 	When time.Time
 }
