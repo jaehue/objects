@@ -5,15 +5,19 @@ type TicketOffice struct {
 	Tickets []Ticket
 }
 
-func (o *TicketOffice) PopTicket() Ticket {
+func (o *TicketOffice) popTicket() Ticket {
 	ticket := o.Tickets[0]
 	o.Tickets = o.Tickets[1:]
 	return ticket
 }
 
-func (o *TicketOffice) MinusAmount(amount float64) {
+func (o *TicketOffice) minusAmount(amount float64) {
 	o.Amount -= amount
 }
-func (o *TicketOffice) PlusAmount(amount float64) {
+func (o *TicketOffice) plusAmount(amount float64) {
 	o.Amount += amount
+}
+
+func (o *TicketOffice) SellTicketTo(audience *Audience) {
+	o.plusAmount(audience.Buy(o.popTicket()))
 }
